@@ -7,8 +7,26 @@
     "mongodb": "^1.3.23",
     "rxjs": "^5.4.3"
   },
-  "devDependencies": {},
-  "scripts": {},
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "commitizen": "^2.9.6",
+    "cz-freecodecamp": "^1.0.1",
+    "eslint": "^4.8.0",
+    "eslint-plugin-import": "^2.7.0",
+    "husky": "^0.14.3",
+    "prettier": "^1.7.4",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "scripts": {
+    "lint": "eslint --ext=js,jsx .",
+    "lint:fix": "eslint . --ext=js,jsx --fix",
+    "pretest": "npm run lint",
+    "test": "echo 'yo'",
+    "format": "prettier 'lib/**/*.js' 'config.sample.js' --trailing-comma all --single-quote --write",
+    "postformat": "npm run lint:fix",
+    "commit": "git-cz",
+    "commitmsg": "validate-commit-msg"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/freecodecamp/mongodb-statsd.git"
