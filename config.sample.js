@@ -1,3 +1,4 @@
+/* eslint-disable quote-props */
 module.exports = {
   graphiteHost: 'you.graphite.server',
   graphitePort: 2003,
@@ -9,24 +10,37 @@ module.exports = {
   graphiteKeyTemplateCounters: (cluster, host, metric) =>
     `mongodb.databases.${cluster}.${host}.${metric}.count`,
 
+  // when auth is needed
+  // mongo: {
+  //   user: null,
+  //   password: null,
+  //   authDB: null,
+  // },
   servers: [
     {
       host: 'mongo-server-01',
-      shortName: 'mongo_01', // optional
-      cluster: 'main', // optional
-      setMemberName: 'mongo-server-01:27017', // for replicate set member lookup
+      port: '27017',
+      // optional
+      shortName: 'mongo_01',
+      // optional
+      cluster: 'main',
+      // for replicate set member lookup
+      // must match replicate server name
+      setMemberName: 'mongo-server-01:27017',
     },
     {
       host: 'mongo-server-02',
-      shortName: 'mongo_02', // optional
-      cluster: 'main', // optional
-      setMemberName: 'mongo-server-02:27017', // for replicate set member lookup
+      port: '27017',
+      shortName: 'mongo_02',
+      cluster: 'main',
+      setMemberName: 'mongo-server-02:27017',
     },
     {
       host: 'mongo-server-03',
-      shortName: 'mongo_03', // optional
-      cluster: 'main', // optional
-      setMemberName: 'mongo-server-03:27017', // for replicate set member lookup
+      port: '27017',
+      shortName: 'mongo_03',
+      cluster: 'main',
+      setMemberName: 'mongo-server-03:27017',
     },
   ],
 
@@ -61,20 +75,21 @@ module.exports = {
       },
 
       opcounters: {
-        update: 'counter',
-        query: 'counter',
-        insert: 'counter',
+        command: 'counter',
+        delete: 'counter',
         getmore: 'counter',
-        getmore: 'command',
+        insert: 'counter',
+        query: 'counter',
+        update: 'counter',
       },
 
       opcountersRepl: {
+        command: 'counter',
+        delete: 'counter',
+        getmore: 'counter',
         insert: 'counter',
         query: 'counter',
         update: 'counter',
-        delete: 'counter',
-        getmore: 'counter',
-        command: 'counter',
       },
 
       dur: {
