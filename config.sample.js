@@ -5,9 +5,9 @@ module.exports = {
 
   intervalSeconds: 10,
 
-  graphiteKeyTemplateGauges: (cluster, host, metric) =>
+  graphiteKeyTemplateGauges: ({ cluster, host, metric }) =>
     `mongodb.databases.${cluster}.${host}.${metric}.mean`,
-  graphiteKeyTemplateCounters: (cluster, host, metric) =>
+  graphiteKeyTemplateCounters: ({ cluster, host, metric }) =>
     `mongodb.databases.${cluster}.${host}.${metric}.count`,
 
   // when auth is needed
