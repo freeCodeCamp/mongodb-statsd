@@ -1,5 +1,8 @@
 /* eslint-disable quote-props */
 module.exports = {
+  // set true for replica sets
+  // set false for standalone
+  isReplSet: true,
   graphiteHost: 'you.graphite.server',
   graphitePort: 2003,
 
