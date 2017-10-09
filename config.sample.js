@@ -9,15 +9,15 @@ module.exports = {
   intervalSeconds: 10,
 
   graphiteKeyTemplateGauges: ({ cluster, host, metric }) =>
-    `mongodb.databases.${cluster}.${host}.${metric}.mean`,
+    `mongodb.databases.${cluster || 'standalone'}.${host}.${metric}.mean`,
   graphiteKeyTemplateCounters: ({ cluster, host, metric }) =>
-    `mongodb.databases.${cluster}.${host}.${metric}.count`,
+    `mongodb.databases.${cluster || 'standalone'}.${host}.${metric}.count`,
 
   // when auth is needed
-  // mongo: {
-  //   user: null,
+  // auth: {
+  //   username: null,
   //   password: null,
-  //   authDB: null,
+  //   authDB: 'admin',
   // },
   servers: [
     {
